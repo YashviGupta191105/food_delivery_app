@@ -24,10 +24,12 @@ class WelcomeImage extends StatelessWidget {
             Container(
               width: 300,
               height: 300,
-              child: SvgPicture.asset("assets/icons/foodlogo.svg") ,
-            )
+              child: Image.asset("assets/icons/foodlogo.png") ,
+            ),
+            Spacer()
           ],
-        )
+        ),
+        SizedBox(height: kDefaultPadding * 2),
       ],
     );
   }
