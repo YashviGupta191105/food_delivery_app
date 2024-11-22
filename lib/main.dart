@@ -3,7 +3,7 @@ import 'package:food_delievery_app/constants.dart';
 import 'Welcome/WelcomeScreen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 

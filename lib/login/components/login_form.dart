@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delievery_app/Components/existing_account_check.dart';
 import 'package:food_delievery_app/constants.dart';
 import 'package:food_delievery_app/signup/signup_screen.dart';
+import 'package:food_delievery_app/HomePage/home_page.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -45,23 +46,28 @@ class LoginForm extends StatelessWidget {
         Hero(
           tag: "login_btn",
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return HomeScreen();
+              }));
+            },
             child: Text(
               "Login".toUpperCase(),
             ),
           ),
         ),
         const SizedBox(height: kDefaultPadding),
-        AlreadyHaveAnAccountCheck(press: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return const SignUpScreen();
-              },
-            ),
-          );
-        },
+        AlreadyHaveAnAccountCheck(
+          press: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const SignUpScreen();
+                },
+              ),
+            );
+          },
         ),
       ],
     ));
