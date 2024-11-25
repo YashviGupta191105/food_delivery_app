@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delievery_app/constants.dart';
 import 'package:food_delievery_app/HomePage/restaurant.dart';
 import 'package:food_delievery_app/HomePage/profile.dart';
+import 'package:food_delievery_app/HomePage/mappage.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -14,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> _pages = [
     const MainHomePage(),
     const Restaurant(),
-    const MainHomePage(),
+    MapPage(),
     const ProfileScreen(),
   ];
   int _selectedIndex = 0;
@@ -101,7 +103,7 @@ class MainHomePage extends StatelessWidget {
           ],
         ),
       ),
-      child:  SingleChildScrollView(
+      child: SingleChildScrollView(
         child: Column(
           children: [
             const TopBar(),
@@ -112,7 +114,7 @@ class MainHomePage extends StatelessWidget {
               height: he.height * .01,
             ),
             const CardListView(),
-             const SHeadline(),
+            const SHeadline(),
             SizedBox(
               height: he.height * .01,
             ),
@@ -203,7 +205,6 @@ class TopBar extends StatelessWidget {
   }
 }
 
-
 class SearchInput extends StatelessWidget {
   const SearchInput({super.key});
 
@@ -247,7 +248,6 @@ class SearchInput extends StatelessWidget {
   }
 }
 
-
 class PromoCard extends StatelessWidget {
   const PromoCard({super.key});
 
@@ -261,7 +261,10 @@ class PromoCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           gradient: const LinearGradient(
-            colors: [Color.fromARGB(255, 66, 189, 216), Color.fromARGB(255, 165, 39, 179)], // Warm gradient colors
+            colors: [
+              Color.fromARGB(255, 66, 189, 216),
+              Color.fromARGB(255, 165, 39, 179)
+            ], // Warm gradient colors
           ),
         ),
         child: Stack(
@@ -274,7 +277,7 @@ class PromoCard extends StatelessWidget {
               ),
             ),
             Image.network(
-               "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/Image.png?alt=media&token=8256c357-cf86-4f76-8c4d-4322d1ebc06c", // Foreground image
+              "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/Image.png?alt=media&token=8256c357-cf86-4f76-8c4d-4322d1ebc06c", // Foreground image
             ),
             const Align(
               alignment: Alignment.topRight,
@@ -410,7 +413,6 @@ class CardListView extends StatelessWidget {
                 "Italian ",
                 "https://firebasestorage.googleapis.com/v0/b/flutterbricks-public.appspot.com/o/Restaurant%20Image.png?alt=media&token=43509b4c-269e-4279-8c88-36dc9ed27a66",
                 "20 min away"),
-                
           ],
         ),
       ),
@@ -443,10 +445,9 @@ class MenuListView extends StatelessWidget {
                 "Biryani",
                 "https://icon2.cleanpng.com/20180330/axe/kisspng-hyderabadi-biryani-indian-cuisine-dish-chicken-mea-biryani-5abedc42d00da9.6620510115224576668522.jpg",
                 "Rs 250"),
-      
             Card(
                 "Burger",
-               "https://www.pikpng.com/pngl/m/41-418681_free-png-download-burger-png-pics-png-images.png",
+                "https://www.pikpng.com/pngl/m/41-418681_free-png-download-burger-png-pics-png-images.png",
                 "Rs 45"),
           ],
         ),

@@ -80,9 +80,126 @@ class MainScreen extends StatelessWidget {
             TopImage(index: index),
             Rating(index: index),
             FoodDescription(index: index),
+           MenuItems(restaurantId: index,),
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class MenuItems extends StatefulWidget {
+  final int restaurantId; // Pass the unique restaurant ID
+
+  MenuItems({Key? key, required this.restaurantId}) : super(key: key);
+
+  @override
+  State<MenuItems> createState() => _MenuItemsState();
+}
+
+class _MenuItemsState extends State<MenuItems> {
+  void _increaseQuantity(int index) {
+    setState(() {
+      restaurantMenus[widget.restaurantId]![index].quantity++;
+    });
+  }
+
+  void _decreaseQuantity(int index) {
+    setState(() {
+      if (restaurantMenus[widget.restaurantId]![index].quantity > 0) {
+        restaurantMenus[widget.restaurantId]![index].quantity--;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    var menu = restaurantMenus[widget.restaurantId] ?? [];
+
+    return Column(
+      children: [
+        for (int i = 0; i < menu.length; i++)
+          Container(
+            padding: const EdgeInsets.only(top: 6, left: 25, right: 25),
+            height: size.height * 0.06,
+            width: size.width,
+            margin: const EdgeInsets.only(bottom: 10),
+            decoration: BoxDecoration(
+              color: Colors.transparent.withOpacity(0.01),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(50),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(menu[i].name,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    )),
+                Row(
+                  children: [
+                    Text(
+                      menu[i].price,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () => _decreaseQuantity(i),
+                          child: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(216, 245, 205, 236),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.remove,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          '${menu[i].quantity}',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        GestureDetector(
+                          onTap: () => _increaseQuantity(i),
+                          child: Container(
+                            padding: const EdgeInsets.all(8),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(216, 245, 205, 236),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+      ],
     );
   }
 }

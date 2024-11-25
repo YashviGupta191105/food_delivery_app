@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949559129697",
+    "project_id": "dinedoor-e9261",
+    "storage_bucket": "dinedoor-e9261.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949559129697:android:408149256c8fa9555b1c20",
+        "android_client_info": {
+          "package_name": "com.example.food_delievery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAz2owMAQMtV82Uas8h_HUQPauRvYop05E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
